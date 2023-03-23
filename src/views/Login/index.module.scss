@@ -1,0 +1,21 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: #f6f6f6;
+
+  .container {
+    position: relative;
+    top: 30%;
+    width: 320px;
+    margin: auto;
+  }
+  .tip {
+    span:nth-child(2) {
+      color: #096dd9;
+      cursor: pointer;
+      &:hover {
+        border-bottom: 1px solid currentColor;
+      }
+    }
+  }
+}
