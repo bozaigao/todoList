@@ -1,11 +1,12 @@
 import User from '../db/models/user';
+import md5 from 'md5';
 
 export default class UserService {
   public async addUser(usr: string, psd: string) {
     try {
       const user = new User({
         usr,
-        psd,
+        psd: md5(psd),
         todos: [],
       });
       return await user.save();
@@ -28,7 +29,7 @@ export default class UserService {
         throw new Error('用户不存在 (￣o￣).zZ');
       }
       // 校验密码
-      if (psd === user.psd) {
+      if (md5(psd) === user.psd) {
         return user;
       }
       throw new Error('密码错误 (￣o￣).zZ');
